@@ -208,7 +208,7 @@
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KDF4PP5Q');</script>
+  })(window,document,'script','dataLayer','GTM-5KNBXRZP');</script>
 
   <style>
     * {
@@ -325,25 +325,35 @@
       align-items: center;
       border-bottom: 1px solid #1e293b;
     }
-    .cli-dots {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .dot.red { background: #ef4444; }
-    .dot.yellow { background: #f59e0b; }
-    .dot.green { background: #10b981; }
     .cli-title {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.88rem;
       color: #e2e8f0;
-      margin-left: 12px;
       font-weight: 600;
+    }
+    .btn-copy-cli {
+      background: #1e00ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+    }
+    .btn-copy-cli:hover {
+      background: #2563eb;
+    }
+    .btn-copy-cli-text {
+      display: inline;
+    }
+    .btn-copy-cli-icon {
+      display: none;
     }
     .btn-copy {
       background: #1e00ff;
@@ -960,6 +970,22 @@
       display: none;
     }
     @media (max-width: 768px) {
+      .btn-copy-cli {
+        width: 34px !important;
+        height: 34px !important;
+        min-width: 34px !important;
+        padding: 0 !important;
+        border-radius: 6px !important;
+        flex-shrink: 0 !important;
+      }
+      .btn-copy-cli-text {
+        display: none !important;
+      }
+      .btn-copy-cli-icon {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
       .hero-title {
         font-size: 1.85rem;
       }
@@ -997,7 +1023,7 @@
   </style>
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDF4PP5Q"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KNBXRZP"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <header class="tavardt-header">
@@ -1020,13 +1046,11 @@
 
     <div class="cli-card">
       <div class="cli-header">
-        <div class="cli-dots">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-          <span class="cli-title">Local CLI Terminal Tests</span>
-        </div>
-        <button class="btn-copy" id="btn-copy-cli" onclick="copyCliCommand()" type="button">Copy</button>
+        <span class="cli-title">Local CLI Terminal Tests</span>
+        <button class="btn-copy-cli" id="btn-copy-cli" onclick="copyCliCommand()" type="button" aria-label="Copy Command">
+          <span class="btn-copy-cli-text">Copy</span>
+          <span class="btn-copy-cli-icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg></span>
+        </button>
       </div>
       <div class="cli-body">
         <p class="cli-desc">To inspect your CI/CD YAML manifests deterministically, without browser sandbox limitations or CORS constraints, run the official Python utility directly in your terminal or runner:</p>
@@ -1459,9 +1483,15 @@ if __name__ == "__main__":
       const code = document.getElementById('cli-terminal-code').innerText;
       navigator.clipboard.writeText(code).then(() => {
         const btn = document.getElementById('btn-copy-cli');
-        const orig = btn.innerText;
-        btn.innerText = 'Copied!';
-        setTimeout(() => { btn.innerText = orig; }, 2000);
+        const textSpan = btn.querySelector('.btn-copy-cli-text');
+        if (textSpan) {
+          textSpan.innerText = 'Copied!';
+          setTimeout(() => { textSpan.innerText = 'Copy'; }, 2000);
+        } else {
+          const orig = btn.innerText;
+          btn.innerText = 'Copied!';
+          setTimeout(() => { btn.innerText = orig; }, 2000);
+        }
       });
     }
 
