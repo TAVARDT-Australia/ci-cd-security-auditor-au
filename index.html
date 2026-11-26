@@ -1101,8 +1101,8 @@ python audit_ci_cd_security.py .github/workflows/</div>
 <span class="faq-icon">+</span>
 </button>
 <div class="faq-body">
-            The pull_request_target trigger executes with base repository write permissions and full access to repository secrets. If it checks out code from an untrusted fork PR without strict validation, external contributors can execute arbitrary bash scripts within the privileged runner and steal credentials.
-          </div>
+The pull_request_target trigger executes with base repository write permissions and full access to repository secrets. If it checks out code from an untrusted fork PR without strict validation, external contributors can execute arbitrary bash scripts within the privileged runner and steal credentials.
+</div>
 </div>
 <div class="faq-item">
 <button class="faq-btn" onclick="toggleFaq(this)" type="button">
@@ -1110,8 +1110,8 @@ python audit_ci_cd_security.py .github/workflows/</div>
 <span class="faq-icon">+</span>
 </button>
 <div class="faq-body">
-            Git tags are mutable pointers that can be rewritten or pointed to compromised code at any time. If an upstream maintainer account is compromised, attackers can update the tag to deliver malicious payloads. Pinning to an immutable 40-character commit SHA eliminates this supply chain risk.
-          </div>
+Git tags are mutable pointers that can be rewritten or pointed to compromised code at any time. If an upstream maintainer account is compromised, attackers can update the tag to deliver malicious payloads. Pinning to an immutable 40-character commit SHA eliminates this supply chain risk.
+</div>
 </div>
 <div class="faq-item">
 <button class="faq-btn" onclick="toggleFaq(this)" type="button">
@@ -1119,8 +1119,8 @@ python audit_ci_cd_security.py .github/workflows/</div>
 <span class="faq-icon">+</span>
 </button>
 <div class="faq-body">
-            Default workflow tokens often inherit broad write permissions. Declaring permissions: contents: read at the workflow root enforces least privilege, ensuring jobs only receive elevated permissions when explicitly required to push releases or upload build artifacts.
-          </div>
+Default workflow tokens often inherit broad write permissions. Declaring permissions: contents: read at the workflow root enforces least privilege, ensuring jobs only receive elevated permissions when explicitly required to push releases or upload build artifacts.
+</div>
 </div>
 <div class="faq-item">
 <button class="faq-btn" onclick="toggleFaq(this)" type="button">
@@ -1128,8 +1128,8 @@ python audit_ci_cd_security.py .github/workflows/</div>
 <span class="faq-icon">+</span>
 </button>
 <div class="faq-body">
-            Never insert GitHub context expressions directly into inline shell scripts. Instead, export context expressions to environment variables (env: PR_TITLE: ${ github.event.pull_request.title }) and reference $PR_TITLE inside the script to avoid shell parameter injection.
-          </div>
+Never insert GitHub context expressions directly into inline shell scripts. Instead, export context expressions to environment variables (env: PR_TITLE: ${ github.event.pull_request.title }) and reference $PR_TITLE inside the script to avoid shell parameter injection.
+</div>
 </div>
 <div class="faq-item">
 <button class="faq-btn" onclick="toggleFaq(this)" type="button">
@@ -1137,8 +1137,8 @@ python audit_ci_cd_security.py .github/workflows/</div>
 <span class="faq-icon">+</span>
 </button>
 <div class="faq-body">
-            Execute the official audit_ci_cd_security.py script locally or inside your validation pipeline. It runs deterministic AST and YAML checks against permissions, triggers, and action pinning rules without sending data to external endpoints.
-          </div>
+Execute the official audit_ci_cd_security.py script locally or inside your validation pipeline. It runs deterministic AST and YAML checks against permissions, triggers, and action pinning rules without sending data to external endpoints.
+</div>
 </div>
 </div>
 </section>
